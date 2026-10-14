@@ -1,1 +1,626 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgb(47, 144, 255);
+    color: white;
+    padding: 20px;
+}
+.titulo-header{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+/* BOTÓN DEL CARRITO */
+.titulo-header #carrito {
+    position: absolute;
+    right: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background-color: #403e3e;
+    color: #fefeff;
+    border: 2px solid #403e3e;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+/* TEXTO DEL BOTÓN */
+.titulo-header #carrito h5 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* CONTADOR DE PRODUCTOS */
+.titulo-header #carrito span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 23px;
+    height: 23px;
+    padding: 0 5px;
+    border-radius: 50%;
+    background-color: #2f90ff;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* EFECTO AL PASAR EL MOUSE */
+.titulo-header #carrito:hover {
+    background-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+
+.titulo-header #modoOscuro{ 
+    font-size: 15px;
+    position: absolute;
+    right: 0;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #403e3e;
+}
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    gap: 60px;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover{
+    text-decoration: underline;
+}
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    max-width: 1400px;
+    margin: 35px auto 1px;
+    padding: 50px 55px;
+
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 45px;
+
+    background: linear-gradient(125deg, #063973, #2f90ff);
+    border-radius: 28px;
+    overflow: hidden;
+}
+
+.hero-contenido {
+    color: #ffffff;
+}
+
+.etiqueta-hero {
+    display: inline-block;
+    margin-bottom: 22px;
+    padding: 8px 15px;
+
+    border-radius: 30px;
+    background: yellow;
+    color: black;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    margin-bottom: 22px;
+    font-size: clamp(34px, 4vw, 58px);
+    line-height: 1.1;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: white;
+}
+
+.hero-contenido p {
+    max-width: 480px;
+    margin-bottom: 30px;
+    color: white;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.btn-hero {
+    display: inline-block;
+    padding: 16px 23px;
+
+    background: #1769ff;
+    color: #ffffff;
+    border-radius: 10px;
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-hero:hover {
+    background: #ffffff;
+    color: #1769ff;
+    transform: translateY(-3px);
+}
+
+.hero-imagen {
+    position: relative;
+    height: 330px;
+}
+
+.hero-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* =========================
+   CONTENEDOR DEL MAIN
+========================= */
+
+.contenedor {
+    margin: 0 auto;
+    padding: 120px 35px;
+}
+
+.seccion-productos {
+    padding-bottom: 35px;
+}
+
+.encabezado-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.subtitulo {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #1769ff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.encabezado-seccion h2 {
+    margin-bottom: 8px;
+    font-size: 34px;
+    line-height: 1.2;
+}
+
+.encabezado-seccion p {
+    color: #778196;
+    font-size: 14px;
+}
+
+.contador-productos {
+    padding: 10px 15px;
+    border-radius: 30px;
+
+    background: #e9f0ff;
+    color: #1769ff;
+
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   GRID: 4 COLUMNAS
+========================= */
+
+.grid-camisetas {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+}
+
+
+/* =========================
+   CARDS DE CAMISETAS
+========================= */
+
+.card-camiseta {
+    min-width: 0;
+    overflow: hidden;
+
+    background: #ffffff;
+    border: 1px solid #e8edf5;
+    border-radius: 18px;
+
+    box-shadow: 0 0 15px #2f90ff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-camiseta:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 18px 40px rgba(18, 38, 63, 0.13);
+}
+
+
+/* IMÁGENES */
+
+.imagen-camiseta {
+    position: relative;
+    height: 245px;
+    overflow: hidden;
+    background: #edf1f7;
+}
+
+.imagen-camiseta img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.card-camiseta:hover .imagen-camiseta img {
+    transform: scale(1.06);
+}
+
+
+/* ETIQUETAS */
+
+.etiqueta-producto {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+
+    padding: 7px 10px;
+    border-radius: 6px;
+
+    background: #1769ff;
+    color: #ffffff;
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.etiqueta-producto.oferta {
+    background: #ef4444;
+}
+
+
+/* BOTÓN FAVORITOS */
+
+.btn-favorito {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #ffffff;
+    color: #263348;
+
+    font-size: 26px;
+    cursor: pointer;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+    transition: 0.2s;
+}
+
+.btn-favorito:hover {
+    transform: scale(1.1);
+    color: #ef4444;
+}
+
+.btn-favorito[aria-pressed="true"] {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+
+/* INFORMACIÓN DEL PRODUCTO */
+
+.info-camiseta {
+    padding: 20px;
+}
+
+.categoria {
+    display: block;
+    margin-bottom: 7px;
+
+    color: #1769ff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.info-camiseta h3 {
+    margin-bottom: 5px;
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+.descripcion {
+    margin-bottom: 18px;
+    color: #778196;
+    font-size: 13px;
+}
+
+
+/* PRECIO Y BOTÓN */
+
+.precio-boton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    padding-top: 15px;
+    border-top: 1px solid #e8edf5;
+}
+
+.precio {
+    color: #0b1b35;
+    font-size: 19px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.btn-agregar {
+    padding: 10px 12px;
+    border: none;
+    border-radius: 8px;
+
+    background: #eaf1ff;
+    color: #1769ff;
+
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-agregar:hover {
+    background: #1769ff;
+    color: #ffffff;
+}
+
+
+footer{
+    background: rgb(47, 144, 255);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 600px) {
+    .titulo-header #carrito {
+        right: 55px;
+        padding: 8px;
+        gap: 6px;
+    }
+
+    .titulo-header #carrito h5 {
+        font-size: 12px;
+    }
+
+    .titulo-header #carrito span {
+        min-width: 20px;
+        height: 20px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 1100px) {
+
+    .hero {
+        margin: 25px 20px 50px;
+        padding: 35px;
+        gap: 25px;
+    }
+
+    .grid-camisetas {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media (max-width: 800px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-imagen {
+        height: 280px;
+    }
+
+    .grid-camisetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .imagen-camiseta {
+        height: 230px;
+    }
+}
+@media (max-width: 480px) {
+
+    .hero {
+        margin: 18px 12px 40px;
+        padding: 25px 20px;
+        border-radius: 18px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero-contenido p {
+        font-size: 14px;
+    }
+
+    .hero-imagen {
+        height: 220px;
+    }
+
+    .contenedor {
+        padding: 0 12px;
+    }
+
+    .encabezado-seccion h2 {
+        font-size: 25px;
+    }
+
+    .encabezado-seccion {
+        align-items: start;
+        gap: 10px;
+    }
+
+    .contador-productos {
+        padding: 7px 9px;
+        font-size: 9px;
+    }
+
+    .grid-camisetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .imagen-camiseta {
+        height: 155px;
+    }
+
+    .info-camiseta {
+        padding: 12px;
+    }
+
+    .info-camiseta h3 {
+        font-size: 14px;
+    }
+
+    .descripcion {
+        margin-bottom: 12px;
+        font-size: 11px;
+    }
+
+    .precio-boton {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .precio {
+        font-size: 16px;
+    }
+
+    .btn-agregar {
+        width: 100%;
+        padding: 10px 5px;
+    }
+
+    .etiqueta-producto {
+        top: 8px;
+        left: 8px;
+        padding: 5px 7px;
+        font-size: 8px;
+    }
+
+    .btn-favorito {
+        top: 8px;
+        right: 8px;
+        width: 32px;
+        height: 32px;
+        font-size: 22px;
+    }
+}
+
+/*Modo Oscuro*/
+body.oscuro{
+    background: #333;
+    color: #f5f5f5;
+}
+.oscuro header{
+    background: rgb(0, 36, 77);
+    color: yellow;
+
+}
+.oscuro header h1{
+    color: yellow;
+}
+.oscuro nav a{
+    color: yellow;
+}
+.oscuro .card-camiseta{
+    background-color: #201e1e;
+}
+.oscuro .precio {
+    color:  rgb(47, 144, 255);
+}
+.oscuro footer{
+    background: rgb(0, 36, 77);
+    color: yellow;
+}
+.oscuro .titulo-header #carrito {
+    background-color:  #fefeff;
+    color:  #403e3e;
+    border: 2px solid  #fefeff;
+}
+
+.oscuro.titulo-header #carrito span {
+    background-color: #ffffff;
+    color: #403e3e;
+  
+}
+
+/* EFECTO AL PASAR EL MOUSE */
+.oscuro .titulo-header #carrito:hover {
+    background-color: #403e3e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
