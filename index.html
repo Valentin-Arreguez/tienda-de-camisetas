@@ -12,7 +12,7 @@
             <h1>Tienda de Camisetas</h1>
             <button id="carrito" onclick="location.href = `#tucarrito`">
                 <h5> 🛒</h5> 
-                <span>0</span>
+                <span id="numeroBotonCarro">0</span>
             </button>
             <button id="modoOscuro">🌙</button>
         </div>
@@ -24,7 +24,6 @@
             </ul>
         </nav>
     </header>
-<!-- HERO -->
     <section class="hero" id="inicio">
         <div class="hero-contenido">
             <span class="etiqueta-hero">⚽ TEMPORADA 2026</span>
@@ -43,7 +42,6 @@
             
         </div>
     </section>
-<!-- CONTENIDO PRINCIPAL -->
     <main class="contenedor" id="camisetas">
         <section class="seccion-productos">
             <div class="encabezado-seccion">
@@ -63,8 +61,29 @@
                     <p>Selecciona tus camisetas.</p>
                 </div>
             </div id="productos-carrito">
-                <p>Tu carrito esta vacio</p>
-                <p>Total: $ <span id="total">0</span></p>
+                <div class="carrito-vacio" id="carrito-vacio">
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-carrito">
+                            <tr>
+                                <td colspan="4">Tu carrito está vacío</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">Total:</td>
+                                <td id="total-carrito">$0</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
                 <br>
                 <button class="btn-vaciar">Vaciar carrito</button>
                 <button class="btn-comprar">Finalizar compra</button>
