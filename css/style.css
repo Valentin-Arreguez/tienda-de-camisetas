@@ -283,7 +283,7 @@ nav a:hover{
 
 .imagen-camiseta {
     position: relative;
-    height: 245px;
+    height: 345px;
     overflow: hidden;
     background: #edf1f7;
 }
@@ -297,30 +297,6 @@ nav a:hover{
 
 .card-camiseta:hover .imagen-camiseta img {
     transform: scale(1.06);
-}
-
-
-/* ETIQUETAS */
-
-.etiqueta-producto {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 2;
-
-    padding: 7px 10px;
-    border-radius: 6px;
-
-    background: #1769ff;
-    color: #ffffff;
-
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-.etiqueta-producto.oferta {
-    background: #ef4444;
 }
 
 
@@ -429,8 +405,55 @@ nav a:hover{
     background: #1769ff;
     color: #ffffff;
 }
+#tucarrito {
+    margin: 40px auto;
+    padding: 25px;
+    max-width: 1000px;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #2f90ff;
+}
 
+#productos-carrito {
+    padding: 15px 0;
+    border-bottom: 1px solid #ccc;
+}
 
+.btn-vaciar,
+.btn-comprar {
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Botón vaciar carrito */
+.btn-vaciar {
+    background: transparent;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+.btn-vaciar:hover {
+    background: #dc3545;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Botón finalizar compra */
+.btn-comprar {
+    background: rgb(47, 144, 255);
+    color: white;
+    border: 1px solid rgb(47, 144, 255);
+}
+
+.btn-comprar:hover {
+    background: #0b5ed7;
+    border-color: #0b5ed7;
+    transform: translateY(-2px);
+}
 footer{
     background: rgb(47, 144, 255);
     color: white;
@@ -623,4 +646,7 @@ body.oscuro{
     background-color: #403e3e;
     transform: translateY(-2px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+.oscuro #tucarrito {
+    background-color: #201e1e;
 }

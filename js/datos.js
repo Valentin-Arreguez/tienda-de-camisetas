@@ -1,4 +1,4 @@
-const productos = [
+export const productos = [
   {
     id: 1,
     etiqueta: "Clubes",
@@ -45,7 +45,7 @@ const productos = [
     nombre: "Camiseta FC Barcelona Titular",
     precio: 64999,
     favorito: false,
-    imagenFrente: "./img/ac-barcelona-2026-27-home-kit.jpg",
+    imagenFrente: "./img/fc-barcelona-2026-27-home-kit.jpg",
     imagenEspalda: "./img/fc-barcelona-2026-27-home-kit-espalda.jpg",
     descripcion: "Rojo y Azul"
   },

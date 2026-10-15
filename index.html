@@ -52,90 +52,23 @@
                     <p>Encontrá tu camiseta ideal.</p>
                 </div>
             </div>
-            <div class="grid-camisetas">
-                <!-- CAMISETA 2 -->
-                <article class="card-camiseta">
-                    <div class="imagen-camiseta">
-                        <button class="btn-favorito" aria-label="Agregar a favoritos" aria-pressed="false" data-id="2">♡</button>
-                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=85" alt="Camiseta Barcelona">
-                    </div>
-                    <div class="info-camiseta">
-                        <span class="categoria">CLUBES</span>
-                        <h3>Camiseta Barcelona</h3>
-                        <p class="descripcion">Modelo titular</p>
-                        <div class="precio-boton">
-                            <span class="precio">$48.000</span>
-                            <button class="btn-agregar" data-id="2">+ Agregar</button>
-                        </div>
-                    </div>
-                </article>
-                <article class="card-camiseta">
-                    <div class="imagen-camiseta">
-                        <button class="btn-favorito" aria-label="Agregar a favoritos" aria-pressed="false" data-id="2">♡</button>
-                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=85" alt="Camiseta Barcelona">
-                    </div>
-                    <div class="info-camiseta">
-                        <span class="categoria">CLUBES</span>
-                        <h3>Camiseta Barcelona</h3>
-                        <p class="descripcion">Modelo titular</p>
-                        <div class="precio-boton">
-                            <span class="precio">$48.000</span>
-                            <button class="btn-agregar" data-id="2">+ Agregar</button>
-                        </div>
-                    </div>
-                </article>
-                <article class="card-camiseta">
-                    <div class="imagen-camiseta">
-                        <button class="btn-favorito" aria-label="Agregar a favoritos" aria-pressed="false" data-id="2">♡</button>
-                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=85" alt="Camiseta Barcelona">
-                    </div>
-                    <div class="info-camiseta">
-                        <span class="categoria">CLUBES</span>
-                        <h3>Camiseta Barcelona</h3>
-                        <p class="descripcion">Modelo titular</p>
-                        <div class="precio-boton">
-                            <span class="precio">$48.000</span>
-                            <button class="btn-agregar" data-id="2">+ Agregar</button>
-                        </div>
-                    </div>
-                </article>
-                <article class="card-camiseta">
-                    <div class="imagen-camiseta">
-                        <button class="btn-favorito" aria-label="Agregar a favoritos" aria-pressed="false" data-id="2">♡</button>
-                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=85" alt="Camiseta Barcelona">
-                    </div>
-                    <div class="info-camiseta">
-                        <span class="categoria">CLUBES</span>
-                        <h3>Camiseta Barcelona</h3>
-                        <p class="descripcion">Modelo titular</p>
-                        <div class="precio-boton">
-                            <span class="precio">$48.000</span>
-                            <button class="btn-agregar" data-id="2">+ Agregar</button>
-                        </div>
-                    </div>
-                </article>
-                <article class="card-camiseta">
-                    <div class="imagen-camiseta">
-                        <button class="btn-favorito" aria-label="Agregar a favoritos" aria-pressed="false" data-id="2">♡</button>
-                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=85" alt="Camiseta Barcelona">
-                    </div>
-                    <div class="info-camiseta">
-                        <span class="categoria">CLUBES</span>
-                        <h3>Camiseta Barcelona</h3>
-                        <p class="descripcion">Modelo titular</p>
-                        <div class="precio-boton">
-                            <span class="precio">$48.000</span>
-                            <button class="btn-agregar" data-id="2">+ Agregar</button>
-                        </div>
-                    </div>
-                </article>
+            <div class="grid-camisetas" id="grilla-camisetas">
+                
+            </div>        
         </section>
         <section id="tucarrito">
             <div class="encabezado-seccion">
                 <div>
-                    <h2>Tu carrito</h2>
-                    <p>Finaliza tu compra.</p>
+                    <h2>🛒  Tu carrito</h2>
+                    <p>Selecciona tus camisetas.</p>
                 </div>
+            </div id="productos-carrito">
+                <p>Tu carrito esta vacio</p>
+                <p>Total: $ <span id="total">0</span></p>
+                <br>
+                <button class="btn-vaciar">Vaciar carrito</button>
+                <button class="btn-comprar">Finalizar compra</button>
+            <div>
             </div>
         </section>
     </main>
@@ -144,6 +77,6 @@
         <p>Creado por Valentín Arreguez</p>
     </footer>
 
-    <script src="./js/app.js"></script>
+    <script type="module" src="./js/app.js"></script>
 </body>
 </html>
