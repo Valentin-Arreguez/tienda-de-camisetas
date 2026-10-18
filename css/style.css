@@ -24,7 +24,6 @@ header{
     align-items: center;
     margin-bottom: 20px;
 }
-/* BOTÓN DEL CARRITO */
 .titulo-header #carrito {
     position: absolute;
     right: 65px;
@@ -41,15 +40,12 @@ header{
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
 }
-
-/* TEXTO DEL BOTÓN */
 .titulo-header #carrito h5 {
     margin: 0;
     font-size: 20px;
     font-weight: bold;
 }
 
-/* CONTADOR DE PRODUCTOS */
 .titulo-header #carrito span {
     display: flex;
     align-items: center;
@@ -63,15 +59,11 @@ header{
     font-size: 12px;
     font-weight: bold;
 }
-
-/* EFECTO AL PASAR EL MOUSE */
 .titulo-header #carrito:hover {
     background-color: #ffffff;
     transform: translateY(-2px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
-
-
 .titulo-header #modoOscuro{ 
     font-size: 15px;
     position: absolute;
@@ -103,9 +95,6 @@ nav a{
 nav a:hover{
     text-decoration: underline;
 }
-/* =========================
-   HERO
-========================= */
 
 .hero {
     max-width: 1400px;
@@ -191,13 +180,9 @@ nav a:hover{
     border-radius: 20px;
 }
 
-/* =========================
-   CONTENEDOR DEL MAIN
-========================= */
-
 .contenedor {
     margin: 0 auto;
-    padding: 120px 35px;
+    padding: 120px 35px 0 ;
 }
 
 .seccion-productos {
@@ -245,21 +230,11 @@ nav a:hover{
     white-space: nowrap;
 }
 
-
-/* =========================
-   GRID: 4 COLUMNAS
-========================= */
-
 .grid-camisetas {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 25px;
 }
-
-
-/* =========================
-   CARDS DE CAMISETAS
-========================= */
 
 .card-camiseta {
     min-width: 0;
@@ -278,9 +253,6 @@ nav a:hover{
     box-shadow: 0 18px 40px rgba(18, 38, 63, 0.13);
 }
 
-
-/* IMÁGENES */
-
 .imagen-camiseta {
     position: relative;
     height: 345px;
@@ -298,9 +270,6 @@ nav a:hover{
 .card-camiseta:hover .imagen-camiseta img {
     transform: scale(1.06);
 }
-
-
-/* BOTÓN FAVORITOS */
 
 .btn-favorito {
     position: absolute;
@@ -337,10 +306,6 @@ nav a:hover{
     background: #ef4444;
     color: #ffffff;
 }
-
-
-/* INFORMACIÓN DEL PRODUCTO */
-
 .info-camiseta {
     padding: 20px;
 }
@@ -366,10 +331,6 @@ nav a:hover{
     color: #778196;
     font-size: 13px;
 }
-
-
-/* PRECIO Y BOTÓN */
-
 .precio-boton {
     display: flex;
     align-items: center;
@@ -405,6 +366,7 @@ nav a:hover{
     background: #1769ff;
     color: #ffffff;
 }
+/*Carrito*/
 #tucarrito {
     margin: 40px auto;
     padding: 25px;
@@ -413,12 +375,118 @@ nav a:hover{
     border-radius: 12px;
     box-shadow: 0 0 15px #2f90ff;
 }
-
+#tucarrito .encabezado-seccion {
+    margin-bottom: 1px;
+}
 #productos-carrito {
     padding: 15px 0;
     border-bottom: 1px solid #ccc;
 }
+/*Tabla del Carrito*/
 
+#tucarrito table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+#tucarrito table thead {
+    background-color: rgb(47, 144, 255);
+    color: white;
+}
+
+#tucarrito table th {
+    padding: 16px 12px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+}
+#tucarrito table td {
+    padding: 15px 12px;
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+    color: #333;
+    font-size: 15px;
+}
+#tucarrito table tbody tr {
+    transition: background-color 0.2s ease;
+}
+#tucarrito table tbody tr:hover {
+    background-color: #f0f7ff;
+}
+#tucarrito table tbody tr:last-child td {
+    border-bottom: none;
+}
+#tucarrito table tfoot {
+    background-color: #eaf3ff;
+    font-weight: bold;
+}
+
+#tucarrito table tfoot td {
+    padding: 18px 12px;
+    border-top: 2px solid rgb(47, 144, 255);
+    font-size: 17px;
+    color: #222;
+}
+#total-carrito {
+    color: #0b5ed7 !important;
+    font-size: 20px !important;
+    font-weight: bold;
+}
+#tucarrito .btn-restar {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background-color: #e8f1ff;
+    color: #0b5ed7;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#tucarrito .btn-restar:hover {
+    background-color: #0b5ed7;
+    color: white;
+}
+#tucarrito .btn-sumar {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(47, 144, 255);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#tucarrito .btn-sumar:hover {
+    background-color: #0b5ed7;
+    transform: scale(1.08);
+}
+#tucarrito .btn-eliminar {
+    width: 34px;
+    height: 32px;
+    margin-left: 8px;
+    border: none;
+    border-radius: 6px;
+    background-color: #ffe5e8;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#tucarrito .btn-eliminar:hover {
+    background-color: #dc3545;
+    transform: scale(1.08);
+}
 .btn-vaciar,
 .btn-comprar {
     padding: 12px 22px;
@@ -428,8 +496,6 @@ nav a:hover{
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
-/* Botón vaciar carrito */
 .btn-vaciar {
     background: transparent;
     color: #dc3545;
@@ -441,8 +507,6 @@ nav a:hover{
     color: white;
     transform: translateY(-2px);
 }
-
-/* Botón finalizar compra */
 .btn-comprar {
     background: rgb(47, 144, 255);
     color: white;
@@ -461,9 +525,7 @@ footer{
     padding: 20px;
     margin-top: 40px;
 }
-/* =========================
-   RESPONSIVE
-========================= */
+/* RESPONSIVE*/
 @media (max-width: 600px) {
     .titulo-header #carrito {
         right: 55px;
@@ -602,7 +664,35 @@ footer{
         font-size: 22px;
     }
 }
+@media (max-width: 600px) {
+    #tucarrito {
+        padding: 12px;
+    }
 
+    #tucarrito table th,
+    #tucarrito table td {
+        padding: 10px 5px;
+        font-size: 12px;
+    }
+
+    #tucarrito .btn-restar,
+    #tucarrito .btn-sumar {
+        width: 26px;
+        height: 28px;
+        font-size: 16px;
+    }
+
+    #tucarrito .btn-eliminar {
+        width: 28px;
+        height: 28px;
+        margin-left: 2px;
+        font-size: 13px;
+    }
+
+    #tucarrito table tfoot td {
+        font-size: 14px;
+    }
+}
 /*Modo Oscuro*/
 body.oscuro{
     background: #333;

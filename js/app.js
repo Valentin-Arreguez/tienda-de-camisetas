@@ -8,11 +8,9 @@ import { productos } from "./datos.js";
     if (body.classList.contains("oscuro")) {
       btnOscuro.textContent = "☀️";
       btnOscuro.style.backgroundColor = "#fbfbfb";
-      guardarEnLocalStorage("modo", "oscuro")
     } else {
       btnOscuro.textContent = "🌙";
       btnOscuro.style.backgroundColor = "#403e3e";
-      guardarEnLocalStorage("modo","");
     }
   });
 
@@ -38,20 +36,22 @@ import { productos } from "./datos.js";
                     </div>
                 </article>`).join("");
 const carrito = [];
-const main = document.querySelector("#camisetas");
+const btnVaciar = document.querySelector(".btn-vaciar")
+const carritosProductos= document.querySelector("#table-carrito");
+const totalCarrito = document.querySelector("#total-carrito");
 const numeroBotonCarro = document.querySelector("#numeroBotonCarro");
 function actualizarNumeroBotonCarro() {
   const cantidadTotal = carrito.reduce((total, item) => total + item.cantidad, 0);
   numeroBotonCarro.textContent = cantidadTotal;
 }
-const carritosProdcutos = document.querySelector("#table-carrito");
+
 function mostrarCarrito() {
     if (carrito.length === 0) {
-      carritosProdcutos.innerHTML = `<tr>
+      carritosProductos.innerHTML = `<tr>
                                 <td colspan="4">Tu carrito está vacío</td>
                             </tr>`;
     } else {
-      carritosProdcutos.innerHTML = carrito.map((item) =>
+      carritosProductos.innerHTML = carrito.map((item) =>
           ` <tr>
               <td>${item.nombre}</td>
               <td>$ ${item.precio.toLocaleString()}</td>
@@ -65,12 +65,11 @@ function mostrarCarrito() {
             `).join("");
     }
 }
-const totalCarrito = document.querySelector("#total-carrito");
 function actualizarTotal() {
   const total = carrito.reduce((total, item) => total + item.precio * item.cantidad, 0);
   totalCarrito.textContent = "$ "+ total.toLocaleString();
 }
-main.addEventListener("click", (e) => {
+grillaProducto.addEventListener("click", (e) => {
    const btnAgregar = e.target.closest(".btn-agregar");
    if (btnAgregar) {
       const id = parseInt(btnAgregar.dataset.id);
@@ -92,11 +91,10 @@ main.addEventListener("click", (e) => {
    }
 })
 
-carritosProdcutos.addEventListener("click", (e) => {
+carritosProductos.addEventListener("click", (e) => {
   const btnRestar = e.target.closest(".btn-restar");
   const btnSumar = e.target.closest(".btn-sumar");
   const btnEliminar = e.target.closest(".btn-eliminar");
-
   if (btnRestar) {
     const id = parseInt(btnRestar.dataset.id);
     const itemExistente = carrito.find((item) => item.id === id);
@@ -128,12 +126,14 @@ carritosProdcutos.addEventListener("click", (e) => {
       actualizarNumeroBotonCarro();
       actualizarTotal();
     }
+  }else{
+    return ;
   }
 });
-const btnVaciar = document.querySelector(".btn-vaciar");
-btnVaciar.addEventListener("click", () => {
-  carrito.length = 0;
-  mostrarCarrito();
-  actualizarNumeroBotonCarro();
-  actualizarTotal();
-});
+
+ btnVaciar.addEventListener("click", () => {
+    carrito.length = 0;
+    mostrarCarrito();
+    actualizarNumeroBotonCarro();
+    actualizarTotal();
+})
