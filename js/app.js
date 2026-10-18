@@ -1,4 +1,4 @@
-import { productos } from "./datos.js";
+import { productos, proximamente } from "./datos.js";
 
 /* Modo oscuro */
   const btnOscuro = document.getElementById("modoOscuro");
@@ -19,7 +19,6 @@ import { productos } from "./datos.js";
  grillaProducto.innerHTML = productos.map(producto => 
                 `<article class="card-camiseta">
                     <div class="imagen-camiseta">
-                        <button class="btn-favorito" aria-label="Agregar a favoritos" aria-pressed="false" data-id="${producto.id}">♡</button>
                         <img src="${producto.imagenFrente}" 
                         onmouseover="this.src='${producto.imagenEspalda}'"
                         onmouseout="this.src='${producto.imagenFrente}'" 
@@ -69,7 +68,7 @@ function actualizarTotal() {
   const total = carrito.reduce((total, item) => total + item.precio * item.cantidad, 0);
   totalCarrito.textContent = "$ "+ total.toLocaleString();
 }
-grillaProducto.addEventListener("click", (e) => {
+body.addEventListener("click", (e) => {
    const btnAgregar = e.target.closest(".btn-agregar");
    if (btnAgregar) {
       const id = parseInt(btnAgregar.dataset.id);
@@ -137,3 +136,44 @@ carritosProductos.addEventListener("click", (e) => {
     actualizarNumeroBotonCarro();
     actualizarTotal();
 })
+
+// Modal de ofertas
+const nuevo = document.querySelector("#proximamente");
+const modalOfertas = document.querySelector("#modal-ofertas");
+const cerrarOfertas = document.querySelector("#cerrar-ofertas");
+const listaOfertas = document.querySelector("#lista-ofertas");
+
+// Seleccionar 3 camisetas existente
+
+function mostrarOfertas() {
+    listaOfertas.innerHTML = proximamente.map(producto => `
+        <article class="card-camiseta">
+                    <div class="imagen-camiseta">
+                        <img src="${producto.imagenFrente}" 
+                        onmouseover="this.src='${producto.imagenEspalda}'"
+                        onmouseout="this.src='${producto.imagenFrente}'" 
+                        alt="${producto.nombre}">
+                    </div>
+                    <div class="info-camiseta">
+                        <span class="categoria">${producto.etiqueta}</span>
+                        <h3>${producto.nombre}</h3>
+                        <p class="descripcion">${producto.descripcion}</p>
+                    </div>
+                </article>`).join("");
+}
+
+nuevo.addEventListener("click", (e) => {
+    e.preventDefault();
+    mostrarOfertas();
+    modalOfertas.classList.add("abierto");
+});
+
+cerrarOfertas.addEventListener("click", () => {
+    modalOfertas.classList.remove("abierto");
+});
+
+modalOfertas.addEventListener("click", (e) => {
+    if (e.target === modalOfertas) {
+        modalOfertas.classList.remove("abierto");
+    }
+});

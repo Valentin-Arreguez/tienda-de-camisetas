@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>Tienda de Camisetas de Futbol</title>
 </head>
-<body>
+<body id="body">
     <header>
         <div class="titulo-header">
             <h1>Tienda de Camisetas</h1>
@@ -20,7 +20,7 @@
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="#camisetas">Productos</a></li>
-                <li><a href="#favoritos">Favoritos</a></li>
+                <li><a href="" id="proximamente">Proximamente</a></li>
             </ul>
         </nav>
     </header>
@@ -54,6 +54,16 @@
                 
             </div>        
         </section>
+          
+        <div id="modal-ofertas" class="modal-ofertas">
+            <div class="contenido-ofertas">
+                <div style="padding-bottom: 15px;">
+                    <button id="cerrar-ofertas" type="button">✕</button>
+                    <h2>🔥 Proximamente</h2>
+                </div>
+                <div id="lista-ofertas" class="grid-camisetas"></div>
+            </div>
+        </div>  
         <section id="tucarrito">
             <div class="encabezado-seccion">
                 <div>
