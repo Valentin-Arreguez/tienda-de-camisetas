@@ -30,7 +30,7 @@ export const productos = [
     id: 4,
     etiqueta: "Clubes",
     nombre: "Camiseta AC Milan Titular",
-    precio: 64999,
+    precio: 65000,
     imagenFrente: "./img/ac-milan-2026-27-home-kit.jpg",
     imagenEspalda: "./img/ac-milan-2026-27-home-kit-espalda.jpg",
     descripcion: "Rojo y Negro"

@@ -8,11 +8,18 @@ import { productos, proximamente } from "./datos.js";
     if (body.classList.contains("oscuro")) {
       btnOscuro.textContent = "☀️";
       btnOscuro.style.backgroundColor = "#fbfbfb";
+      guardarLocalStorage("modo", "oscuro");
     } else {
       btnOscuro.textContent = "🌙";
       btnOscuro.style.backgroundColor = "#403e3e";
+      guardarLocalStorage("modo", "");
     }
   });
+  if(cargarLocalStorage("modo") == "oscuro"){
+  body.classList.add("oscuro")
+  btnOscuro.textContent = "☀️";
+  btnOscuro.style.backgroundColor = "#fbfbfb";
+  }
 
  const grillaProducto = document.getElementById("grilla-camisetas");
 
@@ -29,7 +36,7 @@ import { productos, proximamente } from "./datos.js";
                         <h3>${producto.nombre}</h3>
                         <p class="descripcion">${producto.descripcion}</p>
                         <div class="precio-boton">
-                            <span class="precio">$${producto.precio.toLocaleString()}</span>
+                            <span class="precio">$${producto.precio.toLocaleString("es-AR")}</span>
                             <button class="btn-agregar" data-id="${producto.id}">+ Agregar</button>
                         </div>
                     </div>
@@ -53,20 +60,20 @@ function mostrarCarrito() {
       carritosProductos.innerHTML = carrito.map((item) =>
           ` <tr>
               <td>${item.nombre}</td>
-              <td>$ ${item.precio.toLocaleString()}</td>
+              <td>$ ${item.precio.toLocaleString("es-AR")}</td>
               <td>
               <button class="btn-restar" data-id="${item.id}">-</button> 
               ${item.cantidad} 
               <button class="btn-sumar" data-id="${item.id}">+</button>
               <button class="btn-eliminar" data-id="${item.id}">🗑️</button></td>
-              <td>$ ${(item.precio * item.cantidad).toLocaleString()}</td>
+              <td>$ ${(item.precio * item.cantidad).toLocaleString("es-AR")}</td>
             </tr>
             `).join("");
     }
 }
 function actualizarTotal() {
   const total = carrito.reduce((total, item) => total + item.precio * item.cantidad, 0);
-  totalCarrito.textContent = "$ "+ total.toLocaleString();
+  totalCarrito.textContent = "$ "+ total.toLocaleString("es-AR");
 }
 body.addEventListener("click", (e) => {
    const btnAgregar = e.target.closest(".btn-agregar");
@@ -84,7 +91,8 @@ body.addEventListener("click", (e) => {
         mostrarCarrito();
         actualizarNumeroBotonCarro();
         actualizarTotal();
-      } 
+      }
+      guardarLocalStorage("carrito", carrito); 
    } else{
      return;
    }
@@ -107,6 +115,7 @@ carritosProductos.addEventListener("click", (e) => {
       actualizarNumeroBotonCarro();
       actualizarTotal();
     }
+    guardarLocalStorage("carrito", carrito);
   } else if (btnSumar) {
     const id = parseInt(btnSumar.dataset.id);
     const itemExistente = carrito.find((item) => item.id === id);
@@ -116,6 +125,7 @@ carritosProductos.addEventListener("click", (e) => {
       actualizarNumeroBotonCarro();
       actualizarTotal();
     }
+    guardarLocalStorage("carrito", carrito);
   } else if (btnEliminar) {
     const id = parseInt(btnEliminar.dataset.id);
     const index = carrito.findIndex((item) => item.id === id);
@@ -125,28 +135,28 @@ carritosProductos.addEventListener("click", (e) => {
       actualizarNumeroBotonCarro();
       actualizarTotal();
     }
+    guardarLocalStorage("carrito", carrito);
   }else{
     return ;
   }
 });
 
- btnVaciar.addEventListener("click", () => {
+btnVaciar.addEventListener("click", () => {
     carrito.length = 0;
     mostrarCarrito();
     actualizarNumeroBotonCarro();
     actualizarTotal();
+    guardarLocalStorage("carrito", carrito); 
 })
 
-// Modal de ofertas
-const nuevo = document.querySelector("#proximamente");
-const modalOfertas = document.querySelector("#modal-ofertas");
-const cerrarOfertas = document.querySelector("#cerrar-ofertas");
-const listaOfertas = document.querySelector("#lista-ofertas");
-
-// Seleccionar 3 camisetas existente
+// Modal
+const nuevoProductos = document.querySelector("#proximamente");
+const modal = document.querySelector("#modal");
+const cerrarModal = document.querySelector("#cerrar-modal");
+const lista = document.querySelector("#lista-nuevos-productos");
 
 function mostrarOfertas() {
-    listaOfertas.innerHTML = proximamente.map(producto => `
+    lista.innerHTML = proximamente.map(producto => `
         <article class="card-camiseta">
                     <div class="imagen-camiseta">
                         <img src="${producto.imagenFrente}" 
@@ -162,18 +172,27 @@ function mostrarOfertas() {
                 </article>`).join("");
 }
 
-nuevo.addEventListener("click", (e) => {
+nuevoProductos.addEventListener("click", (e) => {
     e.preventDefault();
     mostrarOfertas();
-    modalOfertas.classList.add("abierto");
+    modal.classList.add("abierto");
 });
 
-cerrarOfertas.addEventListener("click", () => {
-    modalOfertas.classList.remove("abierto");
+cerrarModal.addEventListener("click", () => {
+    modal.classList.remove("abierto");
 });
 
-modalOfertas.addEventListener("click", (e) => {
-    if (e.target === modalOfertas) {
-        modalOfertas.classList.remove("abierto");
-    }
-});
+
+function guardarLocalStorage(clave, valor) {
+    localStorage.setItem(clave, JSON.stringify(valor));
+}
+function cargarLocalStorage(clave) {
+    let localStore = JSON.parse(localStorage.getItem(clave))||[]
+    return localStore
+}
+carrito.push(...cargarLocalStorage("carrito"));
+cargarLocalStorage("carrito");
+mostrarCarrito();
+actualizarNumeroBotonCarro();
+actualizarTotal();
+
