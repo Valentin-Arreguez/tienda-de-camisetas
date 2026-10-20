@@ -1,5 +1,6 @@
 import { productos, proximamente } from "./datos.js";
-
+import * as fnt from "./funciones.js";
+  
 /* Modo oscuro */
   const btnOscuro = document.getElementById("modoOscuro");
   const body = document.body;
@@ -8,14 +9,14 @@ import { productos, proximamente } from "./datos.js";
     if (body.classList.contains("oscuro")) {
       btnOscuro.textContent = "☀️";
       btnOscuro.style.backgroundColor = "#fbfbfb";
-      guardarLocalStorage("modo", "oscuro");
+      fnt.guardarLocalStorage("modo", "oscuro");
     } else {
       btnOscuro.textContent = "🌙";
       btnOscuro.style.backgroundColor = "#403e3e";
-      guardarLocalStorage("modo", "");
+      fnt.guardarLocalStorage("modo", "");
     }
   });
-  if(cargarLocalStorage("modo") == "oscuro"){
+  if(fnt.cargarLocalStorage("modo") == "oscuro"){
   body.classList.add("oscuro")
   btnOscuro.textContent = "☀️";
   btnOscuro.style.backgroundColor = "#fbfbfb";
@@ -23,7 +24,7 @@ import { productos, proximamente } from "./datos.js";
 
  const grillaProducto = document.getElementById("grilla-camisetas");
 
- grillaProducto.innerHTML = productos.map(producto => 
+ grillaProducto.innerHTML = productos.map((producto) => 
                 `<article class="card-camiseta">
                     <div class="imagen-camiseta">
                         <img src="${producto.imagenFrente}" 
@@ -41,16 +42,12 @@ import { productos, proximamente } from "./datos.js";
                         </div>
                     </div>
                 </article>`).join("");
-const carrito = [];
+let carrito = [];
 const btnVaciar = document.querySelector(".btn-vaciar")
 const carritosProductos= document.querySelector("#table-carrito");
 const totalCarrito = document.querySelector("#total-carrito");
 const numeroBotonCarro = document.querySelector("#numeroBotonCarro");
-function actualizarNumeroBotonCarro() {
-  const cantidadTotal = carrito.reduce((total, item) => total + item.cantidad, 0);
-  numeroBotonCarro.textContent = cantidadTotal;
-}
-
+let id, itemExistente, index;
 function mostrarCarrito() {
     if (carrito.length === 0) {
       carritosProductos.innerHTML = `<tr>
@@ -71,71 +68,78 @@ function mostrarCarrito() {
             `).join("");
     }
 }
-function actualizarTotal() {
-  const total = carrito.reduce((total, item) => total + item.precio * item.cantidad, 0);
+function actualizarNumeroBotonCarro() {
+  const cantidadTotal = fnt.acumuladorArray(carrito, true);
+  numeroBotonCarro.textContent = cantidadTotal;
+}
+
+function actualizarPrecio() {
+  const total = fnt.acumuladorArray(carrito, false);
   totalCarrito.textContent = "$ "+ total.toLocaleString("es-AR");
 }
+
 body.addEventListener("click", (e) => {
-   const btnAgregar = e.target.closest(".btn-agregar");
+   const btnAgregar = fnt.capturarBtn(e, ".btn-agregar");
    if (btnAgregar) {
-      const id = parseInt(btnAgregar.dataset.id);
-      const itemExistente = carrito.find((item) => item.id === id);
+      id = fnt.capturarId(btnAgregar);
+      itemExistente = fnt.buscarPorId(carrito, id);
       if (itemExistente) {
         itemExistente.cantidad++;
         mostrarCarrito();
         actualizarNumeroBotonCarro();
-        actualizarTotal();
+        actualizarPrecio();
       } else {
-        const producto = productos.find((p) => p.id === id);
+        const producto = fnt.buscarPorId(productos, id);
         carrito.push({ ...producto, cantidad: 1 });
         mostrarCarrito();
         actualizarNumeroBotonCarro();
-        actualizarTotal();
+        actualizarPrecio();
       }
-      guardarLocalStorage("carrito", carrito); 
+      fnt.guardarLocalStorage("carrito", carrito); 
    } else{
      return;
    }
 })
 
 carritosProductos.addEventListener("click", (e) => {
-  const btnRestar = e.target.closest(".btn-restar");
-  const btnSumar = e.target.closest(".btn-sumar");
-  const btnEliminar = e.target.closest(".btn-eliminar");
+  const btnRestar = fnt.capturarBtn(e, ".btn-restar");
+  const btnSumar = fnt.capturarBtn(e, ".btn-sumar");
+  const btnEliminar = fnt.capturarBtn(e, ".btn-eliminar");
   if (btnRestar) {
-    const id = parseInt(btnRestar.dataset.id);
-    const itemExistente = carrito.find((item) => item.id === id);
+    id = fnt.capturarId(btnRestar);
+    itemExistente = fnt.buscarPorId(carrito, id);
     if (itemExistente) {
       itemExistente.cantidad--;
       if (itemExistente.cantidad === 0) {
-        const index = carrito.indexOf(itemExistente);
-        carrito.splice(index, 1);
+        index = fnt.capturarIndex(carrito, itemExistente);
+        fnt.eliminarElemento(carrito, index, 1);
       }
       mostrarCarrito();
       actualizarNumeroBotonCarro();
-      actualizarTotal();
+      actualizarPrecio();
     }
-    guardarLocalStorage("carrito", carrito);
+    fnt.guardarLocalStorage("carrito", carrito);
   } else if (btnSumar) {
-    const id = parseInt(btnSumar.dataset.id);
-    const itemExistente = carrito.find((item) => item.id === id);
+    id = fnt.capturarId(btnSumar);
+    itemExistente = fnt.buscarPorId(carrito, id);
     if (itemExistente) {
       itemExistente.cantidad++;
       mostrarCarrito();
       actualizarNumeroBotonCarro();
-      actualizarTotal();
+      actualizarPrecio();
     }
-    guardarLocalStorage("carrito", carrito);
+    fnt.guardarLocalStorage("carrito", carrito);
   } else if (btnEliminar) {
-    const id = parseInt(btnEliminar.dataset.id);
-    const index = carrito.findIndex((item) => item.id === id);
-    if (index !== -1) {
-      carrito.splice(index, 1);
+    id = fnt.capturarId(btnEliminar);
+    itemExistente = fnt.buscarPorId(carrito, id);
+    if (itemExistente ) {
+      index = fnt.capturarIndex(carrito, itemExistente);
+      fnt.eliminarElemento(carrito, index, 1);
       mostrarCarrito();
       actualizarNumeroBotonCarro();
-      actualizarTotal();
+      actualizarPrecio();
     }
-    guardarLocalStorage("carrito", carrito);
+    fnt.guardarLocalStorage("carrito", carrito);
   }else{
     return ;
   }
@@ -145,8 +149,8 @@ btnVaciar.addEventListener("click", () => {
     carrito.length = 0;
     mostrarCarrito();
     actualizarNumeroBotonCarro();
-    actualizarTotal();
-    guardarLocalStorage("carrito", carrito); 
+    actualizarPrecio();
+    fnt.guardarLocalStorage("carrito", carrito); 
 })
 
 // Modal
@@ -183,16 +187,9 @@ cerrarModal.addEventListener("click", () => {
 });
 
 
-function guardarLocalStorage(clave, valor) {
-    localStorage.setItem(clave, JSON.stringify(valor));
-}
-function cargarLocalStorage(clave) {
-    let localStore = JSON.parse(localStorage.getItem(clave))||[]
-    return localStore
-}
-carrito.push(...cargarLocalStorage("carrito"));
-cargarLocalStorage("carrito");
+
+carrito.push(...fnt.cargarLocalStorage("carrito"));
 mostrarCarrito();
 actualizarNumeroBotonCarro();
-actualizarTotal();
+actualizarPrecio();
 
