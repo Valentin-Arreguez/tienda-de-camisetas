@@ -520,7 +520,14 @@ footer{
     margin-top: 40px;
 }
 /* RESPONSIVE*/
-@media (max-width: 600px) {
+
+@media (max-width: 655px) {
+    .titulo-header h1{
+        font-size: 25px;
+    }
+    .titulo-header #modoOscuro {
+        font-size: 9px;
+    }
     .titulo-header #carrito {
         right: 55px;
         padding: 8px;
@@ -532,12 +539,35 @@ footer{
     }
 
     .titulo-header #carrito span {
-        min-width: 20px;
-        height: 20px;
-        font-size: 11px;
+        min-width: 15px;
+        height: 15px;
+        font-size: 8px;
     }
 }
+@media (max-width: 515px) {
+    .titulo-header h1{
+        font-size: 15px;
+        left: 15px;
+    }
+    .titulo-header #modoOscuro {
+        font-size: 9px;
+    }
+    .titulo-header #carrito {
+        right: 50px;
+        padding: 8px;
+        gap: 4px;
+    }
 
+    .titulo-header #carrito h5 {
+        font-size: 8px;
+    }
+
+    .titulo-header #carrito span {
+        min-width: 9px;
+        height: 9px;
+        font-size: 6px;
+    }
+}
 @media (max-width: 1100px) {
 
     .hero {
@@ -551,7 +581,7 @@ footer{
     }
 }
 @media (max-width: 800px) {
-
+    
     .hero {
         grid-template-columns: 1fr;
     }

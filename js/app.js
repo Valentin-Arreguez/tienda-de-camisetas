@@ -43,6 +43,7 @@ import * as fnt from "./funciones.js";
                     </div>
                 </article>`).join("");
 let carrito = [];
+const btnFinalizar = document.querySelector(".btn-comprar")
 const btnVaciar = document.querySelector(".btn-vaciar")
 const carritosProductos= document.querySelector("#table-carrito");
 const totalCarrito = document.querySelector("#total-carrito");
@@ -187,7 +188,18 @@ cerrarModal.addEventListener("click", () => {
 });
 
 
-
+btnFinalizar.addEventListener("click",()=>{
+  if (carrito.length == 0) {
+    fnt.errorDeCarrito()
+  } else {
+    fnt.compraFinalizada()
+    carrito.length = 0;
+    mostrarCarrito()
+    actualizarNumeroBotonCarro()
+    actualizarPrecio()
+    fnt.guardarLocalStorage("carrito",carrito)
+  }
+})
 carrito.push(...fnt.cargarLocalStorage("carrito"));
 mostrarCarrito();
 actualizarNumeroBotonCarro();

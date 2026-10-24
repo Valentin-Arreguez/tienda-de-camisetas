@@ -31,3 +31,17 @@ export function capturarIndex(array, elemento) {
 export function eliminarElemento(array, i, cantidad) {
    return array.splice(i, cantidad);
 }
+export function compraFinalizada() {
+    Swal.fire({
+        title: 'Compra Realizada',
+        text: 'Gracias, por tu compra',
+        icon: 'success',
+    })
+}
+export function errorDeCarrito() {
+    Swal.fire({
+        title: 'ERROR',
+        text: 'Tu carrito es Vacio',
+        icon: 'error',
+    })
+}
