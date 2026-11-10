@@ -45,3 +45,27 @@ export function errorDeCarrito() {
         icon: 'error',
     })
 }
+
+export function pintarProductos(elemento) {
+    return `<article class="card-camiseta">
+                    <div class="imagen-camiseta">
+                        <img src="${elemento.imagenFrente}" 
+                        onmouseover="this.src='${elemento.imagenEspalda}'"
+                        onmouseout="this.src='${elemento.imagenFrente}'" 
+                        alt="${elemento.nombre}">
+                    </div>
+                    <div class="info-camiseta">
+                        <span class="categoria">${elemento.etiqueta}</span>
+                        <h3>${elemento.nombre}</h3>
+                        <p class="descripcion">${elemento.descripcion}</p>
+                        <div class="precio-boton">
+                            <span class="precio">$${elemento.precio.toLocaleString("es-AR")}</span>
+                            <button class="btn-agregar" data-id="${elemento.id}">+ Agregar</button>
+                        </div>
+                    </div>
+                </article>`
+}
+
+export function filtrarPorEtiqueta(array, etiqueta) {
+    return array.filter((elemento) => elemento.etiqueta == etiqueta);
+}

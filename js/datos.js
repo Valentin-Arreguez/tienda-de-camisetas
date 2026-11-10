@@ -18,22 +18,21 @@ export const productos = [
     descripcion: "Rojo y Blanco"
   },
   {
-    id: 3,
-    etiqueta: "Clubes",
-    nombre: "Camiseta Bayern Munich Titular",
-    precio: 64999,
-    imagenFrente: "./img/bayern-munchen-2026-27-home-kit.jpg",
-    imagenEspalda: "./img/bayern-munchen-2026-27-home-kit-espalda.jpg",
-    descripcion: "Rojo"
-  },
-  {
-    id: 4,
-    etiqueta: "Clubes",
-    nombre: "Camiseta AC Milan Titular",
-    precio: 65000,
-    imagenFrente: "./img/ac-milan-2026-27-home-kit.jpg",
-    imagenEspalda: "./img/ac-milan-2026-27-home-kit-espalda.jpg",
-    descripcion: "Rojo y Negro"
+    id: 11,
+    etiqueta: "Seleccion",
+    nombre: "Camiseta Brasil Titular",
+    precio: 66000,
+    imagenFrente: "./img/brazil-2026-home-kit.jpg",
+    imagenEspalda: "./img/brazil-2026-home-kit-espalda.jpg",
+    descripcion: "Amarillo"
+  },{
+    id: 12,
+    etiqueta: "Seleccion",
+    nombre: "Camiseta Francia Titular",
+    precio: 66000,
+    imagenFrente: "./img/france-2026-home-kit.jpg",
+    imagenEspalda: "./img/france-2026-home-kit-espalda.jpg",
+    descripcion: "Azul"
   },
   {
     id: 5,
@@ -54,6 +53,15 @@ export const productos = [
     descripcion: "Negro y Azul"
   },
   {
+    id: 9,
+    etiqueta: "Seleccion",
+    nombre: "Camiseta Argentina Titular",
+    precio: 66000,
+    imagenFrente: "./img/argentina-2026-home-kit.jpg",
+    imagenEspalda: "./img/argentina-2026-home-kit-espalda.jpg",
+    descripcion: "Celeste y Blanco"
+  },
+  {
     id: 7,
     etiqueta: "Clubes",
     nombre: "Camiseta Real Madrid Titular",
@@ -61,27 +69,18 @@ export const productos = [
     imagenFrente: "./img/real-madrid-2026-27-home-kit.jpg",
     imagenEspalda: "./img/real-madrid-2026-27-home-kit-espalda.jpg",
     descripcion: "Blanco"
-  },
-  {
-    id: 8,
-    etiqueta: "Clubes",
-    nombre: "Camiseta Borussia Dortmund Titular",
-    precio: 64999,
-    imagenFrente: "./img/borussia-dortmund-2026-27-home-kit.jpg",
-    imagenEspalda: "./img/borussia-dortmund-2026-27-home-kit-espalda.jpg",
-    descripcion: "Amarillo"
   }
 ];
 
 export const proximamente =[
   {
-    id: 9,
-    etiqueta: "Seleccion",
-    nombre: "Camiseta Argentina Titular",
+    id: 8,
+    etiqueta: "Clubes",
+    nombre: "Camiseta Borussia Dortmund Titular",
     precio: "----",
-    imagenFrente: "./img/argentina-2026-home-kit.jpg",
-    imagenEspalda: "./img/argentina-2026-home-kit-espalda.jpg",
-    descripcion: "Celeste y Blanco"
+    imagenFrente: "./img/borussia-dortmund-2026-27-home-kit.jpg",
+    imagenEspalda: "./img/borussia-dortmund-2026-27-home-kit-espalda.jpg",
+    descripcion: "Amarillo"
   },
   {
     id: 10,
@@ -93,22 +92,22 @@ export const proximamente =[
     descripcion: "Rojo"
   },
   {
-    id: 11,
-    etiqueta: "Seleccion",
-    nombre: "Camiseta Brasil Titular",
+    id: 3,
+    etiqueta: "Clubes",
+    nombre: "Camiseta Bayern Munich Titular",
     precio: "----",
-    imagenFrente: "./img/brazil-2026-home-kit.jpg",
-    imagenEspalda: "./img/brazil-2026-home-kit-espalda.jpg",
-    descripcion: "Amarillo"
+    imagenFrente: "./img/bayern-munchen-2026-27-home-kit.jpg",
+    imagenEspalda: "./img/bayern-munchen-2026-27-home-kit-espalda.jpg",
+    descripcion: "Rojo"
   },
   {
-    id: 12,
-    etiqueta: "Seleccion",
-    nombre: "Camiseta Francia Titular",
-    precio: "----",
-    imagenFrente: "./img/france-2026-home-kit.jpg",
-    imagenEspalda: "./img/france-2026-home-kit-espalda.jpg",
-    descripcion: "Azul"
+    id: 4,
+    etiqueta: "Clubes",
+    nombre: "Camiseta AC Milan Titular",
+    precio: 65000,
+    imagenFrente: "./img/ac-milan-2026-27-home-kit.jpg",
+    imagenEspalda: "./img/ac-milan-2026-27-home-kit-espalda.jpg",
+    descripcion: "Rojo y Negro"
   }
 ]
 

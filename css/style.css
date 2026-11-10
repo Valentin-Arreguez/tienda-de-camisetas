@@ -217,7 +217,17 @@ nav a:hover{
     color: #778196;
     font-size: 14px;
 }
-
+.encabezado-seccion .btn-filtro {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background: #1769ff;
+    color: #eaf1ff;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+}
 .contador-productos {
     padding: 10px 15px;
     border-radius: 30px;
@@ -766,4 +776,8 @@ body.oscuro{
 }
 .oscuro #tucarrito {
     background-color: #201e1e;
+}
+.oscuro .encabezado-seccion .btn-filtro {
+    background: rgb(0, 36, 77);
+    color: yellow;
 }

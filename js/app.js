@@ -24,24 +24,8 @@ import * as fnt from "./funciones.js";
 
  const grillaProducto = document.getElementById("grilla-camisetas");
 
- grillaProducto.innerHTML = productos.map((producto) => 
-                `<article class="card-camiseta">
-                    <div class="imagen-camiseta">
-                        <img src="${producto.imagenFrente}" 
-                        onmouseover="this.src='${producto.imagenEspalda}'"
-                        onmouseout="this.src='${producto.imagenFrente}'" 
-                        alt="${producto.nombre}">
-                    </div>
-                    <div class="info-camiseta">
-                        <span class="categoria">${producto.etiqueta}</span>
-                        <h3>${producto.nombre}</h3>
-                        <p class="descripcion">${producto.descripcion}</p>
-                        <div class="precio-boton">
-                            <span class="precio">$${producto.precio.toLocaleString("es-AR")}</span>
-                            <button class="btn-agregar" data-id="${producto.id}">+ Agregar</button>
-                        </div>
-                    </div>
-                </article>`).join("");
+ grillaProducto.innerHTML = productos.map((producto) => fnt.pintarProductos(producto)).join("");
+/* Carrito */
 let carrito = [];
 const btnFinalizar = document.querySelector(".btn-comprar")
 const btnVaciar = document.querySelector(".btn-vaciar")
@@ -80,6 +64,17 @@ function actualizarPrecio() {
 }
 
 body.addEventListener("click", (e) => {
+  const btnFiltro = fnt.capturarBtn(e, ".btn-filtro");
+  if (btnFiltro) {
+    const etiqueta = btnFiltro.dataset.etiqueta;
+    let productosFiltrados;
+    if (etiqueta == "todos") {
+      productosFiltrados = productos;
+    } else {
+      productosFiltrados = fnt.filtrarPorEtiqueta(productos, etiqueta);
+    }
+    grillaProducto.innerHTML = productosFiltrados.map((producto) => fnt.pintarProductos(producto)).join("");
+  }
    const btnAgregar = fnt.capturarBtn(e, ".btn-agregar");
    if (btnAgregar) {
       id = fnt.capturarId(btnAgregar);
