@@ -92,6 +92,7 @@ body.addEventListener("click", (e) => {
         actualizarPrecio();
       }
       fnt.guardarLocalStorage("carrito", carrito); 
+      fnt.mensaje("Producto agregado al carrito");
    } else{
      return;
    }
@@ -109,6 +110,7 @@ carritosProductos.addEventListener("click", (e) => {
       if (itemExistente.cantidad === 0) {
         index = fnt.capturarIndex(carrito, itemExistente);
         fnt.eliminarElemento(carrito, index, 1);
+        fnt.mensaje("Producto eliminado del carrito");
       }
       mostrarCarrito();
       actualizarNumeroBotonCarro();
@@ -123,6 +125,7 @@ carritosProductos.addEventListener("click", (e) => {
       mostrarCarrito();
       actualizarNumeroBotonCarro();
       actualizarPrecio();
+      fnt.mensaje("Producto agregado al carrito");
     }
     fnt.guardarLocalStorage("carrito", carrito);
   } else if (btnEliminar) {
@@ -134,20 +137,13 @@ carritosProductos.addEventListener("click", (e) => {
       mostrarCarrito();
       actualizarNumeroBotonCarro();
       actualizarPrecio();
+      fnt.mensaje("Producto eliminado del carrito");
     }
     fnt.guardarLocalStorage("carrito", carrito);
   }else{
     return ;
   }
 });
-
-btnVaciar.addEventListener("click", () => {
-    carrito.length = 0;
-    mostrarCarrito();
-    actualizarNumeroBotonCarro();
-    actualizarPrecio();
-    fnt.guardarLocalStorage("carrito", carrito); 
-})
 
 // Modal
 const nuevoProductos = document.querySelector("#proximamente");
@@ -181,6 +177,15 @@ nuevoProductos.addEventListener("click", (e) => {
 cerrarModal.addEventListener("click", () => {
     modal.classList.remove("abierto");
 });
+
+btnVaciar.addEventListener("click", () => {
+    carrito.length = 0;
+    mostrarCarrito();
+    actualizarNumeroBotonCarro();
+    actualizarPrecio();
+    fnt.guardarLocalStorage("carrito", carrito); 
+    fnt.mensaje("Carrito vaciado");
+})
 
 
 btnFinalizar.addEventListener("click",()=>{

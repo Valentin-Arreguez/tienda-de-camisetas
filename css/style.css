@@ -522,6 +522,20 @@ nav a:hover{
     border-color: #0b5ed7;
     transform: translateY(-2px);
 }
+.mensaje {
+    position: fixed;
+    bottom: 20px;
+    left: auto;
+    right: 20px;
+    margin: 0;
+    border: transparent;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgb(47, 144, 255);
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
 footer{
     background: rgb(47, 144, 255);
     color: white;
@@ -778,6 +792,10 @@ body.oscuro{
     background-color: #201e1e;
 }
 .oscuro .encabezado-seccion .btn-filtro {
+    background: rgb(0, 36, 77);
+    color: yellow;
+}
+.oscuro .mensaje {
     background: rgb(0, 36, 77);
     color: yellow;
 }

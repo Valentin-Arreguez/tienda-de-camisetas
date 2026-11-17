@@ -41,7 +41,7 @@ export function compraFinalizada() {
 export function errorDeCarrito() {
     Swal.fire({
         title: 'ERROR',
-        text: 'Tu carrito es Vacio',
+        text: 'Tu carrito esta Vacio',
         icon: 'error',
     })
 }
@@ -68,4 +68,16 @@ export function pintarProductos(elemento) {
 
 export function filtrarPorEtiqueta(array, etiqueta) {
     return array.filter((elemento) => elemento.etiqueta == etiqueta);
+}
+let tiempo;
+export function mensaje(mensaje) {
+    const mensajeModal = document.querySelector(".mensaje");
+    mensajeModal.textContent = mensaje;
+    mensajeModal.show();
+    if (mensajeModal.open) {
+        clearTimeout(tiempo);
+    }
+    tiempo = setTimeout(() => {
+        mensajeModal.close();
+    }, 2000);
 }
